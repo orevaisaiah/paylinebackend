@@ -810,7 +810,7 @@ const adminSendOtpCode = async (req, res) => {
           .status(StatusCodes.NOT_FOUND)
           .json({ msg: "This user has not made any withdrawal request yet" });
       }
-      if (withdrawn.active === true) {
+      if (user.withdrawalactive === true) {
         const codeAlreadySent = await OtpCode.findOne({ owner: user._id });
         if (codeAlreadySent) {
           await OtpCode.findOneAndDelete({ owner: user._id });
@@ -853,15 +853,13 @@ const adminSendOtpCode = async (req, res) => {
           }
         });
 
-        res.status(StatusCodes.CREATED).json({
+        return res.status(StatusCodes.CREATED).json({
           otp: {
             owner: user._id,
             code: otp,
           },
           msg: "Email Sent Successfully",
         });
-
-        return;
       }
     }
   } catch (error) {

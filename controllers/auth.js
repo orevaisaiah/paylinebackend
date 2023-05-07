@@ -691,6 +691,8 @@ const withdrawal = async (req, res) => {
   });
 
   await newWithdrawal.save();
+  await User.updateOne({ email: email }, { withdrawalactive: true });
+
   const str1 = user.firstname;
   const firstname = str1.charAt(0).toUpperCase() + str1.slice(1);
 
@@ -1081,14 +1083,15 @@ const verifyOtpCode = async (req, res) => {
         .status(StatusCodes.BAD_REQUEST)
         .json({ success: false, msg: "Otp code entered is incorrect!" });
     }
-    if (otpcode.code === otp)
+    if (otpcode.code === otp) {
       await OtpCode.findOneAndDelete({ owner: user._id });
-    await Withdrawal.updateOne({ owner: user_id }, { active: false });
+      await User.updateOne({ owner: user_id }, { withdrawalactive: false });
 
-    return res.status(StatusCodes.CREATED).json({
-      success: true,
-      msg: "withdrawal request Authentication successful.",
-    });
+      return res.status(StatusCodes.CREATED).json({
+        success: true,
+        msg: "withdrawal request Authentication successful.",
+      });
+    }
   }
 };
 

@@ -34,10 +34,7 @@ const WithdrawalSchema = new mongoose.Schema(
       type: String,
       default: "Pending",
     },
-    active: {
-      type: Boolean,
-      default: true,
-    },
+  
   },
   { timestamps: true }
 );

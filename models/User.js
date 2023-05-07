@@ -73,6 +73,10 @@ const UserSchema = new mongoose.Schema(
       type: Number,
       default: 0,
     },
+    withdrawalactive: {
+      type: Boolean,
+      default: false,
+    },
     BTC: {
       name: {
         type: String,
