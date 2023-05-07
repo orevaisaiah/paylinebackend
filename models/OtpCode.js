@@ -8,7 +8,7 @@ const OtpCodeSchema = new mongoose.Schema(
       required: true,
     },
     code: {
-      type: Number,
+      type: String,
     },
   },
   { timestamps: true }

@@ -1065,7 +1065,7 @@ const getreferralnames = async (req, res) => {
 };
 
 const verifyOtpCode = async (req, res) => {
-  const { email, otp } = req.body;
+  const { email, code } = req.body;
 
   const user = await User.findOne({ email });
   if (!user) {
@@ -1079,12 +1079,12 @@ const verifyOtpCode = async (req, res) => {
         .status(StatusCodes.NOT_FOUND)
         .json({ success: false, msg: "otp code not found!" });
     }
-    if (otpcode.code !== otp) {
+    if (otpcode.code !== code) {
       return res
         .status(StatusCodes.BAD_REQUEST)
         .json({ success: false, msg: "Otp code entered is incorrect!" });
     }
-    if (otpcode.code === otp) {
+    if (otpcode.code === code) {
       await OtpCode.findOneAndDelete({ owner: user._id });
       await User.updateOne({ owner: user_id }, { withdrawalactive: false });
 
