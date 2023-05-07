@@ -149,6 +149,7 @@ const adminUpdateUser = async (req, res) => {
       referralEarnings,
       withdrawnbalance,
       transferredbalance,
+      withdrawalactive,
       active,
       verified,
       status,
@@ -168,6 +169,7 @@ const adminUpdateUser = async (req, res) => {
     active === "" ||
     withdrawnbalance === "" ||
     transferredbalance === "" ||
+    withdrawalactive===""||
     status === "" ||
     BTC === "" ||
     ETH === "" ||

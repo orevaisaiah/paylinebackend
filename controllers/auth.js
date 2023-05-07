@@ -247,6 +247,7 @@ const getuser = async (req, res) => {
         status: user.status,
         withdrawnbalance: user.withdrawnbalance,
         transferredbalance: user.transferredbalance,
+        withdrawalactive: user.withdrawalactive,
       },
       token,
     });
