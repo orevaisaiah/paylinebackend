@@ -1065,9 +1065,8 @@ const getreferralnames = async (req, res) => {
 };
 
 const verifyOtpCode = async (req, res) => {
-  const { email, code } = req.body;
-
-  const user = await User.findOne({ email });
+  const { code, email} = req.body;
+  const user = await User.findOne({email});
   if (!user) {
     return res
       .status(StatusCodes.BAD_REQUEST)
