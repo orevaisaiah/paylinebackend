@@ -37,10 +37,11 @@ const upload = require("../middlewares/multer");
 
 router.post("/signup", signup);
 router.post("/signin", signin);
-router.post("/withdrawal-verification", isResetTokenValid, verifyOtpCode);
 router.post("/resend-confirmation-email", resendconfimationmail);
 router.post("/forgot-password", forgotpassword);
+router.post("/withdrawal-verification", verifyUserToken, verifyOtpCode);
 router.post("/reset-password", isResetTokenValid, resetpassword);
+
 router.post(
   "/user-verification",
   verifyUserToken,

@@ -1065,33 +1065,33 @@ const getreferralnames = async (req, res) => {
 };
 
 const verifyOtpCode = async (req, res) => {
-  const { code, email} = req.body;
-  const user = await User.findOne({email});
+  const { code, email } = req.body;
+
+  const user = await User.findOne({ email });
   if (!user) {
     return res
       .status(StatusCodes.BAD_REQUEST)
       .json({ success: false, msg: "User not found!" });
-  } else {
-    const otpcode = await OtpCode.findOne({ owner: user._id });
-    if (!otpcode) {
-      return res
-        .status(StatusCodes.NOT_FOUND)
-        .json({ success: false, msg: "otp code not found!" });
-    }
-    if (otpcode.code !== code) {
-      return res
-        .status(StatusCodes.BAD_REQUEST)
-        .json({ success: false, msg: "Otp code entered is incorrect!" });
-    }
-    if (otpcode.code === code) {
-      await OtpCode.findOneAndDelete({ owner: user._id });
-      await User.updateOne({ owner: user_id }, { withdrawalactive: false });
+  }
+  const otpcode = await OtpCode.findOne({ owner: user._id });
+  if (!otpcode) {
+    return res
+      .status(StatusCodes.NOT_FOUND)
+      .json({ success: false, msg: "otp code not found!" });
+  }
+  if (otpcode.code.toString() !== code.toString()) {
+    return res
+      .status(StatusCodes.BAD_REQUEST)
+      .json({ success: false, msg: "Otp code entered is incorrect!" });
+  }
+  if (otpcode.code === code) {
+    await OtpCode.findOneAndDelete({ owner: user._id });
+    await User.updateOne({ owner: user_id }, { withdrawalactive: false });
 
-      return res.status(StatusCodes.CREATED).json({
-        success: true,
-        msg: "withdrawal request Authentication successful.",
-      });
-    }
+    return res.status(StatusCodes.CREATED).json({
+      success: true,
+      msg: "withdrawal request Authentication successful.",
+    });
   }
 };
 
