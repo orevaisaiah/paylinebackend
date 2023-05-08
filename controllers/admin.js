@@ -169,7 +169,7 @@ const adminUpdateUser = async (req, res) => {
     active === "" ||
     withdrawnbalance === "" ||
     transferredbalance === "" ||
-    withdrawalactive === "" ||
+    withdrawalactive===""||
     status === "" ||
     BTC === "" ||
     ETH === "" ||
@@ -800,70 +800,69 @@ const deleteReceivedMessage = async (req, res) => {
 };
 
 const adminSendOtpCode = async (req, res) => {
-  const {
-    params: { id: _id },
-  } = req;
+  const { email } = req.body;
   try {
-    const user = await User.findOne({ _id: req.params.id });
+    const user = await User.findOne({ email: email });
     if (!user) {
-      return res.status(StatusCodes.NOT_FOUND).json({ msg: "User not found" });
-    }
-    const withdrawn = await Withdrawal.findOne({ owner: user._id });
-    if (!withdrawn) {
-      return res
-        .status(StatusCodes.NOT_FOUND)
-        .json({ msg: "This user has not made any withdrawal request yet" });
-    }
-    if (user.withdrawalactive === true) {
-      const codeAlreadySent = await OtpCode.findOne({ owner: user._id });
-      if (codeAlreadySent) {
-        await OtpCode.findOneAndDelete({ owner: user._id });
+      res.status(StatusCodes.NOT_FOUND).json({ msg: "user not found" });
+    } else {
+      const withdrawn = await Withdrawal.findOne({ owner: user._id });
+      if (!withdrawn) {
+        return res
+          .status(StatusCodes.NOT_FOUND)
+          .json({ msg: "This user has not made any withdrawal request yet" });
       }
-
-      const generateRandomNumber = () => {
-        const minm = 100000;
-        const maxm = 999999;
-        return Math.floor(Math.random() * (maxm - minm + 1)) + minm;
-      };
-      const otp = generateRandomNumber();
-      console.log(otp);
-
-      const newCode = new OtpCode({
-        owner: user._id,
-        code: otp,
-      });
-
-      await newCode.save();
-      const str1 = user.firstname;
-      const firstname = str1.charAt(0).toUpperCase() + str1.slice(1);
-
-      const str2 = user.lastname;
-      const lastname = str2.charAt(0).toUpperCase() + str2.slice(1);
-
-      const smtpTransp0ort = nodemailer.createTransport(mg(mailgunAuth));
-
-      const mailOptions = {
-        from: "support@paylinesupertrade.com",
-        to: user.email,
-        subject: `${otp} is your Passcode`,
-        html: sendOtpCodeTemplate(otp, firstname, lastname),
-      };
-
-      smtpTransport.sendMail(mailOptions, function (error, response) {
-        if (error) {
-          console.log(error);
-        } else {
-          console.log("Email sent successfully.");
+      if (user.withdrawalactive === true) {
+        const codeAlreadySent = await OtpCode.findOne({ owner: user._id });
+        if (codeAlreadySent) {
+          await OtpCode.findOneAndDelete({ owner: user._id });
         }
-      });
 
-      return res.status(StatusCodes.CREATED).json({
-        otp: {
+        const generateRandomNumber = () => {
+          const minm = 100000;
+          const maxm = 999999;
+          return Math.floor(Math.random() * (maxm - minm + 1)) + minm;
+        };
+        const otp = generateRandomNumber();
+        console.log(otp);
+
+        const newCode = new OtpCode({
           owner: user._id,
           code: otp,
-        },
-        msg: "Email Sent Successfully",
-      });
+        });
+
+        await newCode.save();
+        const str1 = user.firstname;
+        const firstname = str1.charAt(0).toUpperCase() + str1.slice(1);
+
+        const str2 = user.lastname;
+        const lastname = str2.charAt(0).toUpperCase() + str2.slice(1);
+
+        const smtpTransport = nodemailer.createTransport(mg(mailgunAuth));
+
+        const mailOptions = {
+          from: "support@paylinesupertrade.com",
+          to: user.email,
+          subject: `${otp} is your Passcode`,
+          html: sendOtpCodeTemplate(otp, firstname, lastname),
+        };
+
+        smtpTransport.sendMail(mailOptions, function (error, response) {
+          if (error) {
+            console.log(error);
+          } else {
+            console.log("Email sent successfully.");
+          }
+        });
+
+        return res.status(StatusCodes.CREATED).json({
+          otp: {
+            owner: user._id,
+            code: otp,
+          },
+          msg: "Email Sent Successfully",
+        });
+      }
     }
   } catch (error) {
     res.status(StatusCodes.INTERNAL_SERVER_ERROR).json(error);

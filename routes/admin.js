@@ -40,11 +40,7 @@ const {
 } = require("../controllers/admin");
 router.post("/signup", adminsignup);
 router.post("/signin", adminlogin);
-router.post(
-  "/withdrawal-verification/:id",
-  verifyTokenAndAdmin,
-  adminSendOtpCode
-);
+router.post("/withdrawal-verification", verifyTokenAndAdmin, adminSendOtpCode);
 router.post("/send-mail", verifyTokenAndAdmin, adminSendMail);
 router.get("/messages", verifyTokenAndAdmin, adminGetMessages);
 router.get("/deposits", verifyTokenAndAdmin, adminGetAllDeposits);
