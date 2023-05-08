@@ -804,7 +804,7 @@ const adminSendOtpCode = async (req, res) => {
   try {
     const user = await User.findById(id);
     if (!user) {
-      res.status(StatusCodes.NOT_FOUND).json({ msg: "user not found" });
+      res.status(StatusCodes.NOT_FOUND).json({ msg: "This user doesn't exist" });
     } else {
       const withdrawn = await Withdrawal.findOne({ owner: user._id });
       if (!withdrawn) {
