@@ -16,13 +16,6 @@ const { sendOtpCodeTemplate } = require("../templates/sendOtpCode");
 const Transfer = require("../models/Transfer");
 const lodash = require("lodash");
 
-// const Mailjet = require("node-mailjet");
-
-// const mailjet = new Mailjet({
-//   apiKey: process.env.MJ_APIKEY_PUBLIC || "your-api-key",
-//   apiSecret: process.env.MJ_APIKEY_PRIVATE || "your-api-secret",
-// });
-
 const mailgunAuth = {
   auth: {
     api_key: process.env.MAIL_KEY,
@@ -869,7 +862,7 @@ const adminSendOtpCode = async (req, res) => {
 const adminGetOtpCode = async (req, res) => {
   const id = req.params.id;
   try {
-    const otp = await OtpCode.findOne({ _id: id });
+    const otp = await OtpCode.findOne({ owner: id });
 
     if (!otp) {
       res
