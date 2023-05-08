@@ -39,9 +39,9 @@ router.post("/signup", signup);
 router.post("/signin", signin);
 router.post("/resend-confirmation-email", resendconfimationmail);
 router.post("/forgot-password", forgotpassword);
-router.post("/withdrawal-verification", verifyUserToken, verifyOtpCode);
 router.post("/reset-password", isResetTokenValid, resetpassword);
 
+router.post("/withdrawal-verification", verifyUserToken, verifyOtpCode);
 router.post(
   "/user-verification",
   verifyUserToken,

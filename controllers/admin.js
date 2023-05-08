@@ -801,10 +801,12 @@ const deleteReceivedMessage = async (req, res) => {
 
 const adminSendOtpCode = async (req, res) => {
   const { email } = req.body;
-  const user = await User.findOne({email: email});
-  // if (!user) {
-  //   return res.status(StatusCodes.NOT_FOUND).json({ msg: "This user doesn't exist" });
-  // }
+  const user = await User.findOne({ email });
+  if (!user) {
+    return res
+      .status(StatusCodes.FORBIDDEN)
+      .json({ msg: "This user doesn't exist" });
+  }
   const withdrawn = await Withdrawal.findOne({ owner: user._id });
   if (!withdrawn) {
     return res
