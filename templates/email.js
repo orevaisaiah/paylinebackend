@@ -120,7 +120,7 @@ exports.sendEmailTemplate = (message, from) => {
       <style>
   
         .primary{
-    background: #30e3ca;
+    background: #0095eb;
   }
   .bg_white{
     background: #ffffff;
@@ -145,7 +145,7 @@ exports.sendEmailTemplate = (message, from) => {
   }
   .btn.btn-primary{
     border-radius: 5px;
-    background: #30e3ca;
+    background: #0095eb;
     color: #ffffff;
   }
   .btn.btn-white{
@@ -183,7 +183,7 @@ exports.sendEmailTemplate = (message, from) => {
   }
   
   a{
-    color: #30e3ca;
+    color: #0095eb;
   }
   
   /*LOGO*/
@@ -192,7 +192,7 @@ exports.sendEmailTemplate = (message, from) => {
     margin: 0;
   }
   .logo h1 a{
-    color: #30e3ca;
+    color: #0095eb;
     font-size: 24px;
     font-weight: 700;
     font-family: 'Lato', sans-serif;
@@ -220,7 +220,7 @@ exports.sendEmailTemplate = (message, from) => {
   }
   .hero .text h2 span{
     font-weight: 600;
-    color: #30e3ca;
+    color: #0095eb;
   }
   
   
@@ -250,7 +250,7 @@ exports.sendEmailTemplate = (message, from) => {
     content: '';
     width: 100%;
     height: 2px;
-    background: #30e3ca;
+    background: #0095eb;
     margin: 0 auto;
   }
   
@@ -331,7 +331,7 @@ exports.sendEmailTemplate = (message, from) => {
       <div style="display: none; font-size: 1px;max-height: 0px; max-width: 0px; opacity: 0; overflow: hidden; font-family: sans-serif;">
         &zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;
       </div>
-      <div style="max-width: 600px; margin: 0 auto;" class="email-container">
+      <div style="max-width: 50%; margin: 0 auto;" class="email-container">
         <!-- BEGIN BODY -->
         <table align="center" role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="margin: auto;">
           <tr>
@@ -347,7 +347,7 @@ exports.sendEmailTemplate = (message, from) => {
           </tr><!-- end tr -->
          
           <tr>
-            <td valign="middle" class="hero bg_white" style="padding: 1em 0 1em 0;">
+            <td valign="middle" class="hero bg_white" style="padding: 0 0 1em 0;">
               <table>
                 <tr>
                   <td>
@@ -364,7 +364,7 @@ exports.sendEmailTemplate = (message, from) => {
 					 text-align: left;
 				   "
 				 >
-				   ${message}</p>
+				 ${message}
                     </div>
                   </td>
                 </tr>
@@ -380,49 +380,6 @@ exports.sendEmailTemplate = (message, from) => {
               <table>
                 <tr>              
             </div>
-                  <td valign="top" width="33.333%" style="padding-top: 20px;">
-                    <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
-                      <tr>
-                        <td style="text-align: left; padding-right: 10px;">
-                          <h3 class="heading">About</h3>
-                          <p>Payline Super Trade offers an array of investment products. Our primary focus has been on emerging and rapid growth markets with an emphasis on forex, stock and other top performing crypto currencies.</p>
-                        </td>
-                      </tr>
-                    </table>
-                  </td>
-                  <td valign="top" width="33.333%" style="padding-top: 20px;">
-                    <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
-                      <tr>
-                        <td style="text-align: left; padding-left: 5px; padding-right: 5px;">
-                          <h3 class="heading">Contact Info</h3>
-                          <ul>
-                            <li><span class="text">203 Fake St. Mountain View, San Francisco, California, USA</span></li>
-                            <li><span class="text">+1 392 3929 210</span></a></li>
-                          </ul>
-                        </td>
-                      </tr>
-                    </table>
-                  </td>
-                  <td valign="top" width="33.333%" style="padding-top: 20px;">
-                    <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
-                      <tr>
-                        <td style="text-align: left; padding-left: 10px;">
-                          <h3 class="heading">Useful Links</h3>
-                          <ul>
-                            <li><a href="https://paylinesupertrade.com/">Home</a></li>
-                            <li><a href="https://paylinesupertrade.com/login">Login</a></li>
-                            <li><a href="https://paylinesupertrade.com/about">About</a></li>
-                            <li><a href="https://paylinesupertrade.com/faq">FAQ</a></li>
-                            <li><a href="https://paylinesupertrade.com/contact-us">Contact us</a></li>
-                          </ul>
-                        </td>
-                      </tr>
-                    </table>
-                  </td>
-                </tr>
-              </table>
-            </td>
-          </tr><!-- end: tr -->
           <tr>
             <td class="bg_light" style="text-align: center;">
               <p>This email was sent to you by ${from}</p>
