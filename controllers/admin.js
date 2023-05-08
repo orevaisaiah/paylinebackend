@@ -801,7 +801,7 @@ const deleteReceivedMessage = async (req, res) => {
 
 const adminSendOtpCode = async (req, res) => {
   const { id } = req.body;
-  const user = await User.findById(id);
+  const user = await User.findById({id});
   if (!user) {
     return res.status(StatusCodes.NOT_FOUND).json({ msg: "This user doesn't exist" });
   }
