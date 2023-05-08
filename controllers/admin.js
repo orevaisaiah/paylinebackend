@@ -800,9 +800,11 @@ const deleteReceivedMessage = async (req, res) => {
 };
 
 const adminSendOtpCode = async (req, res) => {
-  const { id } = req.body;
+  const {
+    params: { id: _id },
+  } = req;
   try {
-    const user = await User.findOne({ _id: id });
+    const user = await User.findOne({ _id: req.params.id });
     if (!user) {
       return res.status(StatusCodes.NOT_FOUND).json({ msg: "User not found" });
     }
