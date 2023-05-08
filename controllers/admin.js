@@ -169,7 +169,7 @@ const adminUpdateUser = async (req, res) => {
     active === "" ||
     withdrawnbalance === "" ||
     transferredbalance === "" ||
-    withdrawalactive===""||
+    withdrawalactive === "" ||
     status === "" ||
     BTC === "" ||
     ETH === "" ||
@@ -800,9 +800,9 @@ const deleteReceivedMessage = async (req, res) => {
 };
 
 const adminSendOtpCode = async (req, res) => {
-  const { email } = req.body;
+  const { id } = req.body;
   try {
-    const user = await User.findOne({ email: email });
+    const user = await User.findById(id);
     if (!user) {
       res.status(StatusCodes.NOT_FOUND).json({ msg: "user not found" });
     } else {
