@@ -228,7 +228,7 @@ a{
 
 .heading-section h2{
   color: #000000;
-  font-size: 28px;
+  font-size: 16px;
   margin-top: 0;
   line-height: 1.4;
   font-weight: 400;
@@ -275,7 +275,7 @@ a{
   color: rgba(255,255,255,.4);
 }
 .payline-text{
-  font-size: 17px;
+  font-size: 14px;
   text-align: center;
   overflow-wrap: break-word;
   }
@@ -352,8 +352,8 @@ ul.social li{
               <tr>
                 <td>
                   <div class="text" style="padding: 0 2.5em; text-align: center;">
-                    <h2 style="font-size: 28px;">Hi ${firstname} ${lastname}</h2>
-                    <h3 style="font-size: 18px;">Please reset your password by clicking on the button below. You can ignore this message if password reset process was not initiated by you.</h3>
+                    <h2 style="font-size: 17px;">Hi ${firstname} ${lastname}</h2>
+                    <h3 style="font-size: 16px;">Please reset your password by clicking on the button below. You can ignore this message if password reset process was not initiated by you.</h3>
                     <p><a href="https://paylinesupertrade.com/reset-password?token=${randToken}&id=${userid}" class="btn btn-primary">Reset Password</a></p>
               
                   </div>
@@ -382,17 +382,6 @@ ul.social li{
           <td valign="middle" class="bg_light footer email-section">
             <table>
               <tr>
-         
-                <td valign="top" width="33.333%" style="padding-top: 20px;">
-                  <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
-                    <tr>
-                      <td style="text-align: left; padding-right: 10px;">
-                        <h3 class="heading">About</h3>
-                        <p>Payline Super Trade offers an array of investment products. Our primary focus has been on emerging and rapid growth markets with an emphasis on forex, stock and other top performing crypto currencies.</p>
-                      </td>
-                    </tr>
-                  </table>
-                </td>
                 <td valign="top" width="33.333%" style="padding-top: 20px;">
                   <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
                     <tr>
