@@ -88,19 +88,11 @@ const UserSchema = new mongoose.Schema(
       },
       walletImg: {
         type: String,
-        default: "https://i.imgur.com/DzXpOEn.png",
+        default: "https://i.imgur.com/t2LKJWz.jpeg",
       },
       walletAddress: {
         type: String,
-        default: "bc1qm93ajk9aylyzkjhukfc8g35w4t6nsztqux6ymd",
-      },
-      walletImg0ne: {
-        type: String,
-        default: "https://i.imgur.com/DzXpOEn.png",
-      },
-      walletAddressOne: {
-        type: String,
-        default: "bc1qm93ajk9aylyzkjhukfc8g35w4t6nsztqux6ymd",
+        default: "35vcHVzPSQnq4ibXjPUaZAz6x9VE855uSt",
       },
       deposit: {
         type: Number,
@@ -130,19 +122,11 @@ const UserSchema = new mongoose.Schema(
       },
       walletImg: {
         type: String,
-        default: "https://i.imgur.com/li3nFyD.png",
+        default: "https://i.imgur.com/IzidIV1.jpeg",
       },
       walletAddress: {
         type: String,
-        default: "0xD6Bb08d3C4b36E9F2fB046Ea75a9989175D9C9Ce",
-      },
-      walletImg0ne: {
-        type: String,
-        default: "https://i.imgur.com/li3nFyD.png",
-      },
-      walletAddressOne: {
-        type: String,
-        default: "0xD6Bb08d3C4b36E9F2fB046Ea75a9989175D9C9Ce",
+        default: "0x1Ad90E8395C7D63FCf2baC4866ab3DB5778d1714",
       },
       deposit: {
         type: Number,
@@ -173,17 +157,9 @@ const UserSchema = new mongoose.Schema(
       },
       walletImg: {
         type: String,
-        default: "https://i.imgur.com/xSDuHpM.png",
+        default: "https://i.imgur.com/3A3V3Yn.jpeg",
       },
       walletAddress: {
-        type: String,
-        default: "bnb1cyfkm5z7lspg3d2sazjygw24cwr8csqga70pj9",
-      },
-      walletImg0ne: {
-        type: String,
-        default: "https://i.imgur.com/xSDuHpM.png",
-      },
-      walletAddressOne: {
         type: String,
         default: "bnb1cyfkm5z7lspg3d2sazjygw24cwr8csqga70pj9",
       },
@@ -216,19 +192,11 @@ const UserSchema = new mongoose.Schema(
       },
       walletImg: {
         type: String,
-        default: "https://i.imgur.com/3jMC89t.png",
+        default: "https://i.imgur.com/3A3V3Yn.jpeg",
       },
       walletAddress: {
         type: String,
-        default: "0xD6Bb08d3C4b36E9F2fB046Ea75a9989175D9C9Ce",
-      },
-      walletImg0ne: {
-        type: String,
-        default: "https://i.imgur.com/3jMC89t.png",
-      },
-      walletAddressOne: {
-        type: String,
-        default: "0xD6Bb08d3C4b36E9F2fB046Ea75a9989175D9C9Ce",
+        default: "TNVggjbfqKRFR84WuiyyRABBJVYrQN6p61",
       },
       deposit: {
         type: Number,
@@ -259,19 +227,11 @@ const UserSchema = new mongoose.Schema(
       },
       walletImg: {
         type: String,
-        default: "https://i.imgur.com/RGWwX8i.png",
+        default: "https://i.imgur.com/lRtkyq3.jpeg",
       },
       walletAddress: {
         type: String,
-        default: "ltc1qgzg7tmwtyt0r59wmdzqcky4l03fvqvnc9s2r20",
-      },
-      walletImg0ne: {
-        type: String,
-        default: "https://i.imgur.com/RGWwX8i.png",
-      },
-      walletAddressOne: {
-        type: String,
-        default: "ltc1qgzg7tmwtyt0r59wmdzqcky4l03fvqvnc9s2r20",
+        default: "MNjb2VoAbirYLbtedDYK4pjcvhgN8Au2HF",
       },
       deposit: {
         type: Number,
@@ -297,23 +257,15 @@ const UserSchema = new mongoose.Schema(
       },
       logo: {
         type: String,
-        default: "",
+        default: "https://i.imgur.com/hFf36e7.png",
       },
       walletImg: {
         type: String,
-        default: "https://i.imgur.com/1zncPnB.png",
+        default: "https://i.imgur.com/dUyl9Ig.jpeg",
       },
       walletAddress: {
         type: String,
-        default: "qz6rzyn2px9d5zyqg092mgqam8vgjm8eeq7mclwq6p",
-      },
-      walletImg0ne: {
-        type: String,
-        default: "https://i.imgur.com/1zncPnB.png",
-      },
-      walletAddressOne: {
-        type: String,
-        default: "qz6rzyn2px9d5zyqg092mgqam8vgjm8eeq7mclwq6p",
+        default: "qq5frd2m0y2agkcchhn3d8m83k0kxtng5q4ym2rrq4",
       },
       deposit: {
         type: Number,
