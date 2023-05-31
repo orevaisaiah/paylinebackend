@@ -351,7 +351,7 @@ ul.social li{
                   <td>
                     <div class="text" style="padding: 0 2.5em; text-align: center;">
                       <h2 style="font-size: 17px;">Hi ${firstname} ${lastname}</h2>
-                      <h3 style="font-size: 15px;">Your one-time withdrawal password is{" "} <strong>${otp} </strong></h3>
+                      <h3 style="font-size: 15px;">Your one-time withdrawal password is <strong>${otp} </strong></h3>
                       <p>Please ignore this message and submit a report to support if this process was not initiated by you</p>
                 
                     </div>

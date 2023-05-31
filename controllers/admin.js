@@ -217,7 +217,7 @@ const adminGetAllDeposits = async (req, res) => {
   }
 };
 
-const adminGetAllWithdrawals = async (req, res) => {
+const adminGetAllTransfers = async (req, res) => {
   const query = req.query.new;
   try {
     const transfers = query
@@ -229,7 +229,7 @@ const adminGetAllWithdrawals = async (req, res) => {
   }
 };
 
-const adminGetAllTransfers = async (req, res) => {
+const adminGetAllWithdrawals = async (req, res) => {
   const query = req.query.new;
   try {
     const withdrawals = query
