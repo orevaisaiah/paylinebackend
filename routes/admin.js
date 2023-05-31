@@ -44,7 +44,7 @@ router.post("/withdrawal-verification", verifyTokenAndAdmin, adminSendOtpCode);
 router.post("/send-mail", verifyTokenAndAdmin, adminSendMail);
 router.get("/messages", verifyTokenAndAdmin, adminGetMessages);
 router.get("/deposits", verifyTokenAndAdmin, adminGetAllDeposits);
-router.get("/withdrawals", verifyTokenAndAdmin, adminGetAllWithdrawals);
+router.get("/all-withdrawals", verifyTokenAndAdmin, adminGetAllWithdrawals);
 router.get("/transfers", verifyTokenAndAdmin, adminGetAllTransfers);
 router.get("/send-mail", verifyTokenAndAdmin, adminGetSentEmails);
 router.get("/user-messages", verifyTokenAndAdmin, getAllMessages);
