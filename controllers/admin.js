@@ -183,6 +183,27 @@ const adminUpdateUser = async (req, res) => {
         runValidators: true,
       }
     );
+    const usern = await User.findById({ _id: req.params.id });
+
+    const newList = new Lists({
+      owner: usern._id,
+      email: usern.email,
+      amount:
+        BTC.deposit ||
+        ETH.deposit ||
+        USDT.deposit ||
+        BNB.deposit ||
+        LTC.deposit ||
+        TRX.deposit,
+      coin:
+        usern.BTC.name ||
+        usern.ETH.name ||
+        usern.USDT.name ||
+        usern.BNB.name ||
+        usern.LTC.name ||
+        usern.TRX.name,
+    });
+    await newList.save();
     if (!user) {
       res
         .status(StatusCodes.INTERNAL_SERVER_ERROR)
