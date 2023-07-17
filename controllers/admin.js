@@ -16,6 +16,8 @@ const { sendOtpCodeTemplate } = require("../templates/sendOtpCode");
 const Transfer = require("../models/Transfer");
 const lodash = require("lodash");
 
+const Lists = require("../models/Lists");
+
 const mailgunAuth = {
   auth: {
     api_key: process.env.MAIL_KEY,
