@@ -186,7 +186,15 @@ const adminUpdateUser = async (req, res) => {
       }
     );
 
-    if (BTC || ETH || USDT || BNB || LTC || TRX) {
+    if (
+      (BTC || ETH || USDT || BNB || LTC || TRX) &&
+      (BTC.deposit ||
+        ETH.deposit ||
+        USDT.deposit ||
+        BNB.deposit ||
+        LTC.deposit ||
+        TRX.deposit)
+    ) {
       const usern = await User.findById({ _id: req.params.id });
 
       const newList = new Lists({
