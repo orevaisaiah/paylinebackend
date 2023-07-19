@@ -186,34 +186,13 @@ const adminUpdateUser = async (req, res) => {
       }
     );
 
-    if (
-      (BTC || ETH || USDT || BNB || LTC || TRX) &&
-      (BTC.deposit ||
-        ETH.deposit ||
-        USDT.deposit ||
-        BNB.deposit ||
-        LTC.deposit ||
-        TRX.deposit)
-    ) {
+    if (BTC || ETH || USDT || BNB || LTC || TRX) {
       const usern = await User.findById({ _id: req.params.id });
 
       const newList = new Lists({
         owner: usern._id,
         email: usern.email,
-        amount:
-          BTC.deposit ||
-          ETH.deposit ||
-          USDT.deposit ||
-          BNB.deposit ||
-          LTC.deposit ||
-          TRX.deposit,
-        coin:
-          usern.BTC.name ||
-          usern.ETH.name ||
-          usern.USDT.name ||
-          usern.BNB.name ||
-          usern.LTC.name ||
-          usern.TRX.name,
+        info: BTC || ETH || USDT || BNB || LTC || TRX,
       });
       await newList.save();
     }

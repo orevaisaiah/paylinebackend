@@ -8,13 +8,10 @@ const DepositListSchema = new mongoose.Schema(
       required: true,
     },
     email: {
-            type: String,
-    },
-    coin: {
       type: String,
     },
-    amount: {
-      type: String,
+    info: {
+      type: Object,
     },
   },
   { timestamps: true }
