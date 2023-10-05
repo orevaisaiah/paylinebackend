@@ -19,6 +19,7 @@ const TransferSchema = new mongoose.Schema(
       type: String,
       required: [true, "Enter amount to send"],
     },
+    currency: {type: String},
     walletAddress: {
       type: String,
       required: [true, "Enter the wallet address you are sending to"],

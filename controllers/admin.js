@@ -889,6 +889,14 @@ const adminGetOtpCode = async (req, res) => {
   }
 };
 
+// const adminUpdateMany = async (req, res) => {
+//   try {
+//     const user =await User.updateMany({}, {$set: {currency: "ÜSD"}})
+//     res.status(StatusCodes.OK).json(user);
+//   } catch (error) {
+//     console.log(error);
+//   }
+// }
 module.exports = {
   adminsignup,
   adminlogin,
@@ -924,4 +932,5 @@ module.exports = {
   adminGetAllTransfers,
   adminSendOtpCode,
   adminGetOtpCode,
+  // adminUpdateMany,
 };

@@ -42,6 +42,7 @@ const signup = async (req, res) => {
     phone,
     occupation,
     referral,
+    currency,
   } = req.body;
   const user = await User.findOne({ email });
   if (user) {
@@ -67,6 +68,7 @@ const signup = async (req, res) => {
     phone,
     occupation,
     referral,
+    currency,
   });
 
   const verificationToken = await VerificationToken.findOne({
@@ -233,6 +235,7 @@ const getuser = async (req, res) => {
         occupation: user.occupation,
         referral: user.referral,
         referralEarnings: user.referralEarnings,
+        currency: user.currency,
         BTC: user.BTC,
         ETH: user.ETH,
         BNB: user.BNB,
@@ -525,6 +528,7 @@ const deposit = async (req, res) => {
   if (!user) {
     return res.status(StatusCodes.FORBIDDEN).json({ msg: "User not found" });
   }
+  const currency = user.currency;
   if (plan === "basic") {
     const newDeposit = new Deposit({
       owner: user._id,
@@ -532,6 +536,7 @@ const deposit = async (req, res) => {
       coin,
       plan,
       amount,
+      currency,
       maturitytime: "1 Day",
     });
 
@@ -548,7 +553,7 @@ const deposit = async (req, res) => {
       from: "support@paylinesupertrade.com",
       to: user.email,
       subject: "Deposit Request Successfully Received ",
-      html: depositRequestTemplate(firstname, lastname, amount),
+      html: depositRequestTemplate(firstname, lastname, amount, currency),
     };
 
     smtpTransport.sendMail(mailOptions, function (error, response) {
@@ -575,6 +580,7 @@ const deposit = async (req, res) => {
       coin,
       plan,
       amount,
+      currency,
       maturitytime: "2 Hours",
     });
 
@@ -591,7 +597,7 @@ const deposit = async (req, res) => {
       from: "support@paylinesupertrade.com",
       to: user.email,
       subject: "Deposit Request Successfully Received ",
-      html: depositRequestTemplate(firstname, lastname, amount),
+      html: depositRequestTemplate(firstname, lastname, amount, currency),
     };
 
     smtpTransport.sendMail(mailOptions, function (error, response) {
@@ -618,6 +624,7 @@ const deposit = async (req, res) => {
       coin,
       plan,
       amount,
+      currency,
       maturitytime: "2 Hours",
     });
 
@@ -634,7 +641,7 @@ const deposit = async (req, res) => {
       from: "support@paylinesupertrade.com",
       to: user.email,
       subject: "Deposit Request Successfully Received ",
-      html: depositRequestTemplate(firstname, lastname, amount),
+      html: depositRequestTemplate(firstname, lastname, amount, currency),
     };
 
     smtpTransport.sendMail(mailOptions, function (error, response) {
@@ -681,6 +688,7 @@ const withdrawal = async (req, res) => {
   if (!user) {
     return res.status(StatusCodes.FORBIDDEN).json({ msg: "User not found" });
   }
+  const currency = user.currency
   const newWithdrawal = new Withdrawal({
     owner: user._id,
     email,
@@ -688,6 +696,7 @@ const withdrawal = async (req, res) => {
     amount,
     walletAddress,
     comment,
+    currency,
     active: true,
   });
 
@@ -706,7 +715,7 @@ const withdrawal = async (req, res) => {
     from: "support@paylinesupertrade.com",
     to: user.email,
     subject: "Withdrawal Request Successfully Sent",
-    html: withdrawalRequestTemplate(firstname, lastname, amount),
+    html: withdrawalRequestTemplate(firstname, lastname, amount, currency),
   };
 
   smtpTransport.sendMail(mailOptions, function (error, response) {
@@ -904,11 +913,13 @@ const transfer = async (req, res) => {
   if (!user) {
     return res.status(StatusCodes.FORBIDDEN).json({ msg: "User not found" });
   }
+  const currency = user.currency
   const newTransfer = new Transfer({
     owner: user._id,
     email,
     coin,
     amount,
+    currency,
     walletAddress,
   });
 
@@ -925,7 +936,7 @@ const transfer = async (req, res) => {
     from: "support@paylinesupertrade.com",
     to: user.email,
     subject: "Withdrawal Request Successfully Sent",
-    html: transferRequestTemplate(firstname, lastname, amount),
+    html: transferRequestTemplate(firstname, lastname, amount, currency),
   };
 
   smtpTransport.sendMail(mailOptions, function (error, response) {

@@ -19,6 +19,7 @@ const WithdrawalSchema = new mongoose.Schema(
       type: String,
       required: [true, "Enter withdrawal amount"],
     },
+    currency: {type: String},
     walletAddress: {
       type: String,
       required: [true, "Enter withdrawal wallet address"],

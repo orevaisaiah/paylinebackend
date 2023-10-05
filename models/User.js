@@ -77,6 +77,10 @@ const UserSchema = new mongoose.Schema(
       type: Boolean,
       default: false,
     },
+    currency: {
+      type: String,
+      default: "USD",
+    },
     BTC: {
       name: {
         type: String,

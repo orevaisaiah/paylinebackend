@@ -37,6 +37,7 @@ const {
   adminGetAllTransfers,
   adminSendOtpCode,
   adminGetOtpCode,
+  // adminUpdateMany,
 } = require("../controllers/admin");
 router.post("/signup", adminsignup);
 router.post("/signin", adminlogin);
@@ -45,6 +46,7 @@ router.post("/send-mail", verifyTokenAndAdmin, adminSendMail);
 router.get("/messages", verifyTokenAndAdmin, adminGetMessages);
 router.get("/deposits", verifyTokenAndAdmin, adminGetAllDeposits);
 router.get("/all-withdrawals", verifyTokenAndAdmin, adminGetAllWithdrawals);
+// router.get("/update-many", adminUpdateMany);
 router.get("/transfers", verifyTokenAndAdmin, adminGetAllTransfers);
 router.get("/send-mail", verifyTokenAndAdmin, adminGetSentEmails);
 router.get("/user-messages", verifyTokenAndAdmin, getAllMessages);
