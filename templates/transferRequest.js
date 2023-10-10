@@ -352,7 +352,7 @@ ul.social li{
                     <div class="text" style="padding: 0 2.5em; text-align: center;">
                       <h2 style="font-size: 17px;"> Dear ${firstname} ${lastname}, transfer request submitted successfully</h2>
                 
-                      <h3 style="font-size:15px;">Your transfer request of ${amount} ${currency}
+                      <h3 style="font-size:15px;">Your transfer request of $${amountCurr} ${currency}
 						has been received and is under review,
 						we will get back to you soon. You can always contact support incase of any delay in processing this request Thank you.</h3>
                     </div>

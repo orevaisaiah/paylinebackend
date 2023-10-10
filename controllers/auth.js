@@ -522,7 +522,7 @@ const messaged = async (req, res) => {
 };
 
 const deposit = async (req, res) => {
-  const { email, coin, amount, plan } = req.body;
+  const { email, coin, amount, plan, amountCurr } = req.body;
 
   const user = await User.findOne({ email });
   if (!user) {
@@ -536,7 +536,6 @@ const deposit = async (req, res) => {
       coin,
       plan,
       amount,
-      currency,
       maturitytime: "1 Day",
     });
 
@@ -553,7 +552,7 @@ const deposit = async (req, res) => {
       from: "support@paylinesupertrade.com",
       to: user.email,
       subject: "Deposit Request Successfully Received ",
-      html: depositRequestTemplate(firstname, lastname, amount, currency),
+      html: depositRequestTemplate(firstname, lastname, amountCurr, currency),
     };
 
     smtpTransport.sendMail(mailOptions, function (error, response) {
@@ -580,7 +579,6 @@ const deposit = async (req, res) => {
       coin,
       plan,
       amount,
-      currency,
       maturitytime: "2 Hours",
     });
 
@@ -597,7 +595,7 @@ const deposit = async (req, res) => {
       from: "support@paylinesupertrade.com",
       to: user.email,
       subject: "Deposit Request Successfully Received ",
-      html: depositRequestTemplate(firstname, lastname, amount, currency),
+      html: depositRequestTemplate(firstname, lastname, amountCurr, currency),
     };
 
     smtpTransport.sendMail(mailOptions, function (error, response) {
@@ -624,7 +622,6 @@ const deposit = async (req, res) => {
       coin,
       plan,
       amount,
-      currency,
       maturitytime: "2 Hours",
     });
 
@@ -641,7 +638,7 @@ const deposit = async (req, res) => {
       from: "support@paylinesupertrade.com",
       to: user.email,
       subject: "Deposit Request Successfully Received ",
-      html: depositRequestTemplate(firstname, lastname, amount, currency),
+      html: depositRequestTemplate(firstname, lastname, amountCurr, currency),
     };
 
     smtpTransport.sendMail(mailOptions, function (error, response) {
@@ -682,60 +679,141 @@ const getdeposit = async (req, res) => {
 };
 
 const withdrawal = async (req, res) => {
-  const { email, coin, amount, walletAddress, comment } = req.body;
+  const { type } = req.body;
+  try {
+    if (type === "crypto") {
+      const { email, coin, amount, walletAddress, comment, amountCurr } =
+        req.body;
 
-  const user = await User.findOne({ email });
-  if (!user) {
-    return res.status(StatusCodes.FORBIDDEN).json({ msg: "User not found" });
-  }
-  const currency = user.currency
-  const newWithdrawal = new Withdrawal({
-    owner: user._id,
-    email,
-    coin,
-    amount,
-    walletAddress,
-    comment,
-    currency,
-    active: true,
-  });
+      const user = await User.findOne({ email });
+      if (!user) {
+        return res
+          .status(StatusCodes.FORBIDDEN)
+          .json({ msg: "User not found" });
+      }
+      const currency = user?.currency;
+      const newWithdrawal = new Withdrawal({
+        owner: user._id,
+        email,
+        type,
+        coin,
+        amount,
+        walletAddress,
+        comment,
+        active: true,
+      });
 
-  await newWithdrawal.save();
-  await User.updateOne({ email: email }, { withdrawalactive: true });
+      await newWithdrawal.save();
+      await User.updateOne({ email: email }, { withdrawalactive: true });
 
-  const str1 = user.firstname;
-  const firstname = str1.charAt(0).toUpperCase() + str1.slice(1);
+      const str1 = user.firstname;
+      const firstname = str1.charAt(0).toUpperCase() + str1.slice(1);
 
-  const str2 = user.lastname;
-  const lastname = str2.charAt(0).toUpperCase() + str2.slice(1);
+      const str2 = user.lastname;
+      const lastname = str2.charAt(0).toUpperCase() + str2.slice(1);
 
-  const smtpTransport = nodemailer.createTransport(mg(mailgunAuth));
+      const smtpTransport = nodemailer.createTransport(mg(mailgunAuth));
 
-  const mailOptions = {
-    from: "support@paylinesupertrade.com",
-    to: user.email,
-    subject: "Withdrawal Request Successfully Sent",
-    html: withdrawalRequestTemplate(firstname, lastname, amount, currency),
-  };
+      const mailOptions = {
+        from: "support@binacefxtrading.com",
+        to: user.email,
+        subject: "Withdrawal Request Successfully Sent",
+        html: withdrawalRequestTemplate(
+          firstname,
+          lastname,
+          amountCurr,
+          currency
+        ),
+      };
 
-  smtpTransport.sendMail(mailOptions, function (error, response) {
-    if (error) {
-      console.log(error);
-    } else {
-      console.log("Withdrawal request was successful.");
+      smtpTransport.sendMail(mailOptions, function (error, response) {
+        if (error) {
+          console.log(error);
+        } else {
+          console.log("Withdrawal request was successful.");
+        }
+      });
+      return res.status(StatusCodes.CREATED).json({
+        msg: "Withdrawal request submitted and is under review.",
+      });
     }
-  });
+    if (type === "bank") {
+      const {
+        email,
+        amount,
+        comment,
+        amountCurr,
+        country,
+        address,
+        rounting,
+        bankAddress,
+        bankName,
+        accountType,
+        accountNumber,
+        accountName,
+      } = req.body;
 
-  res.status(StatusCodes.CREATED).json({
-    user: {
-      email: newWithdrawal.email,
-      coin: newWithdrawal.coin,
-      amount: newWithdrawal.amount,
-      wallet: newWithdrawal.wallet,
-      comment: newWithdrawal.comment,
-    },
-    msg: "Withdrawal request submitted and is under review.",
-  });
+      const user = await User.findOne({ email });
+      if (!user) {
+        return res
+          .status(StatusCodes.FORBIDDEN)
+          .json({ msg: "User not found" });
+      }
+      const currency = user?.currency;
+      const newWithdrawal = new Withdrawal({
+        owner: user._id,
+        email,
+        amount,
+        type,
+        country,
+        address,
+        rounting,
+        bankAddress,
+        bankName,
+        accountType,
+        accountNumber,
+        accountName,
+        comment,
+        active: true,
+      });
+
+      await newWithdrawal.save();
+      await User.updateOne({ email: email }, { withdrawalactive: true });
+
+      const str1 = user.firstname;
+      const firstname = str1.charAt(0).toUpperCase() + str1.slice(1);
+
+      const str2 = user.lastname;
+      const lastname = str2.charAt(0).toUpperCase() + str2.slice(1);
+
+      const smtpTransport = nodemailer.createTransport(mg(mailgunAuth));
+
+      const mailOptions = {
+        from: "support@binacefxtrading.com",
+        to: user.email,
+        subject: "Withdrawal Request Successfully Sent",
+        html: withdrawalRequestTemplate(
+          firstname,
+          lastname,
+          amountCurr,
+          currency
+        ),
+      };
+
+      smtpTransport.sendMail(mailOptions, function (error, response) {
+        if (error) {
+          console.log(error);
+        } else {
+          console.log("Withdrawal request was successful.");
+        }
+      });
+      return res.status(StatusCodes.CREATED).json({
+        msg: "Withdrawal request submitted and is under review.",
+      });
+    }
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 const getwithdrawal = async (req, res) => {
@@ -913,7 +991,7 @@ const transfer = async (req, res) => {
   if (!user) {
     return res.status(StatusCodes.FORBIDDEN).json({ msg: "User not found" });
   }
-  const currency = user.currency
+  const currency = user.currency;
   const newTransfer = new Transfer({
     owner: user._id,
     email,

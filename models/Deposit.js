@@ -23,7 +23,6 @@ const DepositSchema = new mongoose.Schema(
       type: String,
       required: [true, "Please enter amount"],
     },
-    currency: {type: String},
     reference: {
       type: String,
       default: shortid.generate,

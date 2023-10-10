@@ -11,18 +11,26 @@ const WithdrawalSchema = new mongoose.Schema(
     email: {
       type: String,
     },
+    type: {
+      type: String,
+    },
     coin: {
       type: String,
-      required: [true, "Select coin type"],
     },
     amount: {
       type: String,
       required: [true, "Enter withdrawal amount"],
     },
-    currency: {type: String},
+    country: {type: String},
+    address: {type: String},
+    rounting: {type: String},
+    bankAddress: {type: String},
+    bankName: {type: String},
+    accountType: {type: String},
+    accountNumber: {type: String},
+    accountName: {type: String},
     walletAddress: {
       type: String,
-      required: [true, "Enter withdrawal wallet address"],
     },
     comment: {
       type: String,

@@ -1,4 +1,4 @@
-exports.depositRequestTemplate = (firstname, lastname, amount, currency) => {
+exports.depositRequestTemplate = (firstname, lastname, amountCurr, currency) => {
   return `<!DOCTYPE html>
   <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
   <head>
@@ -356,7 +356,7 @@ ul.social li{
                 
                       <h3 style="font-size:15px;">You made a deposit request which has
 						been received and is under review.
-						${amount} ${currency} will be depositted into your
+						${amountCurr} ${currency} will be depositted into your
 						account once transaction is confirmed.
 						Please be patient. Thank you.</h3>
                     </div>
