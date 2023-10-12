@@ -751,6 +751,8 @@ const withdrawal = async (req, res) => {
         accountType,
         accountNumber,
         accountName,
+        mobileNetwork,
+        mobileNumber
       } = req.body;
 
       const user = await User.findOne({ email });

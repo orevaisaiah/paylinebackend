@@ -21,14 +21,16 @@ const WithdrawalSchema = new mongoose.Schema(
       type: String,
       required: [true, "Enter withdrawal amount"],
     },
-    country: {type: String},
-    address: {type: String},
-    rounting: {type: String},
-    bankAddress: {type: String},
-    bankName: {type: String},
-    accountType: {type: String},
-    accountNumber: {type: String},
-    accountName: {type: String},
+    country: { type: String },
+    address: { type: String },
+    rounting: { type: String },
+    bankAddress: { type: String },
+    bankName: { type: String },
+    accountType: { type: String },
+    accountNumber: { type: String },
+    accountName: { type: String },
+    mobileNetwork: { type: String },
+    mobileNumber: { type: String },
     walletAddress: {
       type: String,
     },
@@ -43,7 +45,6 @@ const WithdrawalSchema = new mongoose.Schema(
       type: String,
       default: "Pending",
     },
-  
   },
   { timestamps: true }
 );
