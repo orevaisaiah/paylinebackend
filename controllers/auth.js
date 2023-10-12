@@ -775,6 +775,8 @@ const withdrawal = async (req, res) => {
         accountType,
         accountNumber,
         accountName,
+        mobileNetwork,
+        mobileNumber,
         comment,
         active: true,
       });
