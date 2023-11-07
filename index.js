@@ -42,14 +42,14 @@ app.use(xss());
 // };
 
 // const corsOptions = {
-//   origin: ["https://paylinesupertrade.com/", "http://localhost:3000/"],
+//   origin: ["https://wesgroinvestmentltd.com/", "http://localhost:3000/"],
 //   credentials: true,
 //   optionSuccessStatus: 200,
 // };
 
 let ALLOWED_ORIGINS = [
   "http://localhost:3000",
-  "https://paylinesupertrade.com",
+  "https://wesgroinvestmentltd.com",
 ];
 
 app.use((req, res, next) => {

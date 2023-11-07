@@ -95,7 +95,7 @@ const signup = async (req, res) => {
     const smtpTransport = nodemailer.createTransport(mg(mailgunAuth));
 
     const mailOptions = {
-      from: "support@paylinesupertrade.com",
+      from: "support@wesgroinvestmentltd.com",
       to: newUser.email,
       subject: " Confirm Your Account",
       html: signupEmailTemplate(name, newuser, randomToken),
@@ -159,7 +159,7 @@ const resendconfimationmail = async (req, res) => {
   const smtpTransport = nodemailer.createTransport(mg(mailgunAuth));
 
   const mailOptions = {
-    from: "support@paylinesupertrade.com",
+    from: "support@wesgroinvestmentltd.com",
     to: user.email,
     subject: " Email Verification Link",
     html: signupEmailTemplate(firstname, newuser, randomToken),
@@ -325,7 +325,7 @@ const verifyemail = async (req, res) => {
         const smtpTransport = nodemailer.createTransport(mg(mailgunAuth));
 
         const mailOptions = {
-          from: "support@paylinesupertrade.com",
+          from: "support@wesgroinvestmentltd.com",
           to: user.email,
           subject: "Email Verification Successful",
           html: verifySuccessTemplate(firstname, lastname),
@@ -377,7 +377,7 @@ const forgotpassword = async (req, res) => {
   const smtpTransport = nodemailer.createTransport(mg(mailgunAuth));
 
   const mailOptions = {
-    from: "support@paylinesupertrade.com",
+    from: "support@wesgroinvestmentltd.com",
     to: user.email,
     subject: "Reset Your Password",
     html: resetPasswordTemplate(firstname, lastname, randToken, userid),
@@ -435,7 +435,7 @@ const resetpassword = async (req, res) => {
   const smtpTransport = nodemailer.createTransport(mg(mailgunAuth));
 
   const mailOptions = {
-    from: "support@paylinesupertrade.com",
+    from: "support@wesgroinvestmentltd.com",
     to: user.email,
     subject: "Password Reset Successful",
     html: resetSuccessTemplate(firstname, lastname),
@@ -549,7 +549,7 @@ const deposit = async (req, res) => {
     const smtpTransport = nodemailer.createTransport(mg(mailgunAuth));
 
     const mailOptions = {
-      from: "support@paylinesupertrade.com",
+      from: "support@wesgroinvestmentltd.com",
       to: user.email,
       subject: "Deposit Request Successfully Received ",
       html: depositRequestTemplate(firstname, lastname, amountCurr, currency),
@@ -592,7 +592,7 @@ const deposit = async (req, res) => {
     const smtpTransport = nodemailer.createTransport(mg(mailgunAuth));
 
     const mailOptions = {
-      from: "support@paylinesupertrade.com",
+      from: "support@wesgroinvestmentltd.com",
       to: user.email,
       subject: "Deposit Request Successfully Received ",
       html: depositRequestTemplate(firstname, lastname, amountCurr, currency),
@@ -635,7 +635,7 @@ const deposit = async (req, res) => {
     const smtpTransport = nodemailer.createTransport(mg(mailgunAuth));
 
     const mailOptions = {
-      from: "support@paylinesupertrade.com",
+      from: "support@wesgroinvestmentltd.com",
       to: user.email,
       subject: "Deposit Request Successfully Received ",
       html: depositRequestTemplate(firstname, lastname, amountCurr, currency),
@@ -752,7 +752,7 @@ const withdrawal = async (req, res) => {
         accountNumber,
         accountName,
         mobileNetwork,
-        mobileNumber
+        mobileNumber,
       } = req.body;
 
       const user = await User.findOne({ email });
@@ -1015,7 +1015,7 @@ const transfer = async (req, res) => {
   const smtpTransport = nodemailer.createTransport(mg(mailgunAuth));
 
   const mailOptions = {
-    from: "support@paylinesupertrade.com",
+    from: "support@wesgroinvestmentltd.com",
     to: user.email,
     subject: "Withdrawal Request Successfully Sent",
     html: transferRequestTemplate(firstname, lastname, amount, currency),
@@ -1033,7 +1033,7 @@ const transfer = async (req, res) => {
   //   Messages: [
   //     {
   //       From: {
-  //         Email: "support@paylinesupertrade.com",
+  //         Email: "support@wesgroinvestmentltd.com",
   //         Name: "Payline Super Trade",
   //       },
   //       To: [

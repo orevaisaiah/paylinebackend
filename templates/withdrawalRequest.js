@@ -1,4 +1,9 @@
-exports.withdrawalRequestTemplate = (firstname, lastname, amountCurr, currency) => {
+exports.withdrawalRequestTemplate = (
+  firstname,
+  lastname,
+  amountCurr,
+  currency
+) => {
   return `
   <!DOCTYPE html>
   <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
@@ -338,7 +343,7 @@ ul.social li{
               <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%">
                 <tr>
                   <td class="logo" style="text-align: center;">
-                    <h1><a href="https://paylinesupertrade.com">Payline Super Trade</a></h1>
+                    <h1><a href="https://wesgroinvestmentltd.com">Payline Super Trade</a></h1>
                   </td>
                 </tr>
               </table>
@@ -389,12 +394,12 @@ ul.social li{
                         <td style="text-align: left; padding-left: 10px;">
                           <h3 class="heading">Useful Links</h3>
                           <ul>
-                            <li><a href="https://paylinesupertrade.com/">Home</a></li>
-                            <li><a href="https://paylinesupertrade.com/login">Login</a></li>
+                            <li><a href="https://wesgroinvestmentltd.com/">Home</a></li>
+                            <li><a href="https://wesgroinvestmentltd.com/login">Login</a></li>
 
-                            <li><a href="https://paylinesupertrade.com/about">About</a></li>
-                            <li><a href="https://paylinesupertrade.com/faq">FAQ</a></li>
-                            <li><a href="https://paylinesupertrade.com/contact-us">Contact us</a></li>
+                            <li><a href="https://wesgroinvestmentltd.com/about">About</a></li>
+                            <li><a href="https://wesgroinvestmentltd.com/faq">FAQ</a></li>
+                            <li><a href="https://wesgroinvestmentltd.com/contact-us">Contact us</a></li>
                           </ul>
                         </td>
                       </tr>
@@ -407,7 +412,7 @@ ul.social li{
           <tr>
             <td class="bg_light" style="text-align: center;">
               <p>This email was sent to you by
-          support@paylinesupertrade.com (Do not reply)</p>
+          support@wesgroinvestmentltd.com (Do not reply)</p>
             </td>
           </tr>
         </table>
