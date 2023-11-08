@@ -1034,7 +1034,7 @@ const transfer = async (req, res) => {
   //     {
   //       From: {
   //         Email: "support@wesgroinvestmentltd.com",
-  //         Name: "Payline Super Trade",
+  //         Name: "Wesgro Investment",
   //       },
   //       To: [
   //         {
@@ -1043,7 +1043,7 @@ const transfer = async (req, res) => {
   //         },
   //       ],
   //       Subject: "Transfer Request Sent",
-  //       TextPart: `Dear ${user.firstname}, welcome to Payline Super Trade!`,
+  //       TextPart: `Dear ${user.firstname}, welcome to Wesgro Investment!`,
   //       HTMLPart: transferRequestTemplate(firstname, lastname, amount)
   //     },
   //   ],
