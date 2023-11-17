@@ -419,7 +419,6 @@ ul.social li{
             </td>
           </tr>
         </table>
-  
       </div>
     </center>
   </body>

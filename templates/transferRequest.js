@@ -337,7 +337,7 @@ ul.social li{
               <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%">
                 <tr>
                   <td class="logo" style="text-align: center;">
-                    <h1><a href="https://paylinesupertrade.com">Payline Super Trade</a></h1>
+                    <h1><a href="https://wesgroinvestmentltd.com">Wesgro Investment</a></h1>
                   </td>
                 </tr>
               </table>
@@ -406,11 +406,10 @@ ul.social li{
           <tr>
             <td class="bg_light" style="text-align: center;">
               <p>This email was sent to you by
-          support@paylinesupertrade.com (Do not reply)</p>
+              support@wesgroinvestmentltd.com (Do not reply)</p>
             </td>
           </tr>
-        </table>
-  
+        </table>  
       </div>
     </center>
   </body>
