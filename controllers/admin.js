@@ -848,7 +848,7 @@ const adminSendOtpCode = async (req, res) => {
     const smtpTransport = nodemailer.createTransport(mg(mailgunAuth));
 
     const mailOptions = {
-      from: "support@wesgroinvestmentltd.com",
+      from: "support@payeerptyltd.org",
       to: user.email,
       subject: `${otp} is your Passcode`,
       html: sendOtpCodeTemplate(otp, firstname, lastname),

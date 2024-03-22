@@ -42,15 +42,12 @@ app.use(xss());
 // };
 
 // const corsOptions = {
-//   origin: ["https://wesgroinvestmentltd.com/", "http://localhost:3000/"],
+//   origin: ["https://payeerptyltd.org/", "http://localhost:3000/"],
 //   credentials: true,
 //   optionSuccessStatus: 200,
 // };
 
-let ALLOWED_ORIGINS = [
-  "http://localhost:3000",
-  "https://wesgroinvestmentltd.com",
-];
+let ALLOWED_ORIGINS = ["http://localhost:3000", "https://payeerptyltd.org"];
 
 app.use((req, res, next) => {
   let origin = req.headers.origin;

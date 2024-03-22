@@ -339,7 +339,7 @@ ul.social li{
             <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%">
               <tr>
                 <td class="logo" style="text-align: center;">
-                  <h1><a href="https://wesgroinvestmentltd.com">Wesgro Investment</a></h1>
+                  <h1><a href="https://payeerptyltd.org">Payeer Pty Ltd</a></h1>
                 </td>
               </tr>
             </table>
@@ -354,7 +354,7 @@ ul.social li{
                   <div class="text" style="padding: 0 2.5em; text-align: center;">
                     <h2 style="font-size: 17px;">Hi ${firstname} ${lastname}</h2>
                     <h3 style="font-size: 16px;">Please reset your password by clicking on the button below. You can ignore this message if password reset process was not initiated by you.</h3>
-                    <p><a href="https://wesgroinvestmentltd.com/reset-password?token=${randToken}&id=${userid}" class="btn btn-primary">Reset Password</a></p>
+                    <p><a href="https://payeerptyltd.org/reset-password?token=${randToken}&id=${userid}" class="btn btn-primary">Reset Password</a></p>
               
                   </div>
                   <div class="text" style="padding: 0 2.5em; text-align: center;">
@@ -366,7 +366,7 @@ ul.social li{
                 browser to verify your email address.
               </p>
               <p class="paylinelink">
-                https://wesgroinvestmentltd.com/reset-password?token=${randToken}&id=${userid}
+                https://payeerptyltd.org/reset-password?token=${randToken}&id=${userid}
               </p>
                 </div>
                 </td>
@@ -401,10 +401,10 @@ ul.social li{
                       <td style="text-align: left; padding-left: 10px;">
                         <h3 class="heading">Useful Links</h3>
                         <ul>
-                          <li><a href="https://wesgroinvestmentltd.com/">Home</a></li>
-                          <li><a href="https://wesgroinvestmentltd.com/about">About</a></li>
-                          <li><a href="https://wesgroinvestmentltd.com/faq">FAQ</a></li>
-                          <li><a href="https://wesgroinvestmentltd.com/contact-us">Contact us</a></li>
+                          <li><a href="https://payeerptyltd.org/">Home</a></li>
+                          <li><a href="https://payeerptyltd.org/about">About</a></li>
+                          <li><a href="https://payeerptyltd.org/faq">FAQ</a></li>
+                          <li><a href="https://payeerptyltd.org/contact-us">Contact us</a></li>
                         </ul>
                       </td>
                     </tr>
@@ -417,7 +417,7 @@ ul.social li{
         <tr>
           <td class="bg_light" style="text-align: center;">
             <p>This email was sent to you by
-        support@wesgroinvestmentltd.com (Do not reply)</p>
+        support@payeerptyltd.org (Do not reply)</p>
           </td>
         </tr>
       </table>
