@@ -62,7 +62,7 @@ router.get(
 );
 router.get("/received-message/:messageID", verifyUserToken, getreceivedmessage);
 router.post("/deposit/:userID", verifyUserToken, deposit);
-router.post("/withdrawal/:userID", verifyUserToken, withdrawal);
+router.post("/withdrawal", verifyUserToken, withdrawal);
 router.get("/:userID", verifyUserToken, getuser);
 router.get("/deposit/:userID", verifyUserToken, getdeposit);
 router.get("/withdrawals/:userID", verifyUserToken, getwithdrawal);

@@ -1,4 +1,13 @@
-exports.resetSuccessTemplate = (firstname, lastname) => {
+exports.sendOtpCodeCryptoTemplate = (
+  otp,
+  firstname,
+  lastname,
+  type,
+  amountCurr,
+  currency,
+  coin,
+  walletAddress
+) => {
   return `<!DOCTYPE html>
   <html
     lang="en"
@@ -26,40 +35,41 @@ exports.resetSuccessTemplate = (firstname, lastname) => {
     <body>
       <div style="width: 100%; margin-top: 30px">
         <div>
-          <p>Hello ${firstname} ${lastname}, password reset was successful,</p>
+          <p style="margin-bottom: 0">Hello ${firstname} ${lastname},</p>
+          <h4 style="margin: 15px auto;"><b>Withdrawal Information</b></h4>
+          <p style="margin: 0">Method: <b>${type}</b></p>
+          <p style="margin: 0">Crypto Coin: <b>${coin}</b></p>
+          <p style="margin: 0">Wallet Address: <b>${walletAddress}</b></p>
+          <p style="margin: 0">Amount: <b>${amountCurr} ${currency}</b></p>
   
           <p>
-            Take your global trading journey a step ahead. Make Investments,
-            Trade Cryptocurrencies with high profit value.
+            You (or someone else) has just initiated funds withdrawal on
+            payeerptyltd.org.
           </p>
   
-          <p>
-            You can now access your account with your registered
-            email and the newly updated password.
-          </p>
-          <p>
-            <a
-              href="https://www.payeerptyltd.org/login"
-              class="btn btn-primary"
-              >Login</a
-            >
-          </p>
+          <p>Your one-time withdrawal confirmation code is</p>
+  
+          <h4>
+            <strong style="font-size: 20px">${otp} </strong>
+          </h4>
   
           <p>
-            Please submit a report to support if this process was not initiated by
-            you.
+            Please ignore this message and submit a report to support if this
+            process was not initiated by you.
           </p>
   
           <p>
             <br />
             -- Best regards,<br />
-           
-            <a href="https://www.payeerptyltd.org" target="_blank">payeerptyltd.prg</a><br />
+            <a href="https://www.payeerptyltd.org" target="_blank"
+              >payeerptyltd.org</a
+            ><br />
             &nbsp;
           </p>
         </div>
       </div>
     </body>
   </html>
-`;
+  
+  `;
 };

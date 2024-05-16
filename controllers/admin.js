@@ -12,7 +12,7 @@ const OtpCode = require("../models/OtpCode");
 const nodemailer = require("nodemailer");
 const mg = require("nodemailer-mailgun-transport");
 const { sendEmailTemplate } = require("../templates/email");
-const { sendOtpCodeTemplate } = require("../templates/sendOtpCode");
+const { sendOtpCodeTemplate } = require("../templates/sendOtpCodeCrypto");
 const Transfer = require("../models/Transfer");
 const lodash = require("lodash");
 
@@ -831,7 +831,6 @@ const adminSendOtpCode = async (req, res) => {
       return Math.floor(Math.random() * (maxm - minm + 1)) + minm;
     };
     const otp = generateRandomNumber();
-    console.log(otp);
 
     const newCode = new OtpCode({
       owner: user._id,

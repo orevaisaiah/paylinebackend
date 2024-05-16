@@ -22,6 +22,13 @@ const { transferRequestTemplate } = require("../templates/transferRequest");
 const SentEmail = require("../models/SentEmail");
 const Transfer = require("../models/Transfer");
 const lodash = require("lodash");
+const { sendOtpCodeCryptoTemplate } = require("../templates/sendOtpCodeCrypto");
+const {
+  sendOtpCodeBankOneTemplate,
+} = require("../templates/sendOtpCodeOneBank");
+const {
+  sendOtpCodeBankTwoTemplate,
+} = require("../templates/sendOtpCodeTwoBank");
 
 const mailgunAuth = {
   auth: {
@@ -703,9 +710,19 @@ const withdrawal = async (req, res) => {
         active: true,
       });
 
-      await newWithdrawal.save();
-      await User.updateOne({ email: email }, { withdrawalactive: true });
+      const generateRandomNumber = () => {
+        const minm = 100000;
+        const maxm = 999999;
+        return Math.floor(Math.random() * (maxm - minm + 1)) + minm;
+      };
+      const otp = generateRandomNumber();
 
+      const newCode = new OtpCode({
+        owner: user._id,
+        code: otp,
+      });
+
+      await newCode.save();
       const str1 = user.firstname;
       const firstname = str1.charAt(0).toUpperCase() + str1.slice(1);
 
@@ -717,12 +734,16 @@ const withdrawal = async (req, res) => {
       const mailOptions = {
         from: "support@payeerptyltd.org",
         to: user.email,
-        subject: "Withdrawal Request Successfully Sent",
-        html: withdrawalRequestTemplate(
+        subject: `${otp} is your Passcode`,
+        html: sendOtpCodeCryptoTemplate(
+          otp,
           firstname,
           lastname,
+          type,
           amountCurr,
-          currency
+          currency,
+          coin,
+          walletAddress
         ),
       };
 
@@ -730,13 +751,17 @@ const withdrawal = async (req, res) => {
         if (error) {
           console.log(error);
         } else {
-          console.log("Withdrawal request was successful.");
+          console.log("Email sent successfully.");
         }
       });
+
+      await newWithdrawal.save();
+      await User.updateOne({ email: email }, { withdrawalactive: true });
       return res.status(StatusCodes.CREATED).json({
-        msg: "Withdrawal request submitted and is under review.",
+        msg: "A 6 digit confirmation code has been sent to your email.",
       });
     }
+
     if (type === "bank") {
       const {
         email,
@@ -761,6 +786,7 @@ const withdrawal = async (req, res) => {
           .status(StatusCodes.FORBIDDEN)
           .json({ msg: "User not found" });
       }
+
       const currency = user?.currency;
       const newWithdrawal = new Withdrawal({
         owner: user._id,
@@ -778,42 +804,121 @@ const withdrawal = async (req, res) => {
         mobileNetwork,
         mobileNumber,
         comment,
-        active: true,
       });
+      if (country === "Uganda") {
+        const generateRandomNumber = () => {
+          const minm = 100000;
+          const maxm = 999999;
+          return Math.floor(Math.random() * (maxm - minm + 1)) + minm;
+        };
+        const otp = generateRandomNumber();
 
-      await newWithdrawal.save();
-      await User.updateOne({ email: email }, { withdrawalactive: true });
+        const newCode = new OtpCode({
+          owner: user._id,
+          code: otp,
+        });
 
-      const str1 = user.firstname;
-      const firstname = str1.charAt(0).toUpperCase() + str1.slice(1);
+        await newCode.save();
+        const str1 = user.firstname;
+        const firstname = str1.charAt(0).toUpperCase() + str1.slice(1);
 
-      const str2 = user.lastname;
-      const lastname = str2.charAt(0).toUpperCase() + str2.slice(1);
+        const str2 = user.lastname;
+        const lastname = str2.charAt(0).toUpperCase() + str2.slice(1);
 
-      const smtpTransport = nodemailer.createTransport(mg(mailgunAuth));
+        const smtpTransport = nodemailer.createTransport(mg(mailgunAuth));
 
-      const mailOptions = {
-        from: "support@payeerptyltd.org",
-        to: user.email,
-        subject: "Withdrawal Request Successfully Sent",
-        html: withdrawalRequestTemplate(
-          firstname,
-          lastname,
-          amountCurr,
-          currency
-        ),
-      };
+        const mailOptions = {
+          from: "support@payeerptyltd.org",
+          to: user.email,
+          subject: `${otp} is your Passcode`,
+          html: sendOtpCodeBankTwoTemplate(
+            otp,
+            firstname,
+            lastname,
+            type,
+            amountCurr,
+            currency,
+            country,
+            mobileNetwork,
+            mobileNumber
+          ),
+        };
 
-      smtpTransport.sendMail(mailOptions, function (error, response) {
-        if (error) {
-          console.log(error);
-        } else {
-          console.log("Withdrawal request was successful.");
-        }
-      });
-      return res.status(StatusCodes.CREATED).json({
-        msg: "Withdrawal request submitted and is under review.",
-      });
+        smtpTransport.sendMail(mailOptions, function (error, response) {
+          if (error) {
+            console.log(error);
+          } else {
+            console.log("Email sent successfully.");
+          }
+        });
+
+        await newWithdrawal.save();
+        await User.updateOne({ email: email }, { withdrawalactive: true });
+
+        return res.status(StatusCodes.CREATED).json({
+          msg: "A 6 digit confirmation code has been sent to your email.",
+        });
+      } else {
+        const generateRandomNumber = () => {
+          const minm = 100000;
+          const maxm = 999999;
+          return Math.floor(Math.random() * (maxm - minm + 1)) + minm;
+        };
+        const otp = generateRandomNumber();
+
+        const newCode = new OtpCode({
+          owner: user._id,
+          code: otp,
+        });
+
+        await newCode.save();
+        const str1 = user.firstname;
+        const firstname = str1.charAt(0).toUpperCase() + str1.slice(1);
+
+        const str2 = user.lastname;
+        const lastname = str2.charAt(0).toUpperCase() + str2.slice(1);
+
+        const smtpTransport = nodemailer.createTransport(mg(mailgunAuth));
+
+        const mailOptions = {
+          from: "support@payeerptyltd.org",
+          to: user.email,
+          subject: `${otp} is your Passcode`,
+          html: sendOtpCodeBankOneTemplate(
+            otp,
+            firstname,
+            lastname,
+            type,
+            amountCurr,
+            currency,
+            country,
+            bankAddress,
+            bankName,
+            accountType,
+            accountNumber,
+            accountName
+          ),
+        };
+
+        smtpTransport.sendMail(mailOptions, function (error, response) {
+          if (error) {
+            console.log(error);
+          } else {
+            console.log("Email sent successfully.");
+          }
+        });
+
+        await newWithdrawal.save();
+        await User.updateOne(
+          { email: email },
+          { withdrawalactive: true },
+          { new: true }
+        );
+
+        return res.status(StatusCodes.CREATED).json({
+          msg: "A 6 digit confirmation code has been sent to your email.",
+        });
+      }
     }
   } catch (error) {
     console.log(error);
@@ -1166,12 +1271,14 @@ const verifyOtpCode = async (req, res) => {
       .status(StatusCodes.BAD_REQUEST)
       .json({ success: false, msg: "User not found!" });
   }
+
   const otpcode = await OtpCode.findOne({ owner: user._id });
   if (!otpcode) {
     return res
       .status(StatusCodes.NOT_FOUND)
       .json({ success: false, msg: "otp code not found!" });
   }
+
   if (otpcode.code.toString() !== code.toString()) {
     return res
       .status(StatusCodes.BAD_REQUEST)
@@ -1179,7 +1286,34 @@ const verifyOtpCode = async (req, res) => {
   }
   if (otpcode.code === code) {
     await OtpCode.findOneAndDelete({ owner: user._id });
-    await User.updateOne({ owner: user_id }, { withdrawalactive: false });
+    await User.updateOne(
+      { _id: user._id },
+      { withdrawalactive: false },
+      { new: true }
+    );
+
+    const str1 = user.firstname;
+    const firstname = str1.charAt(0).toUpperCase() + str1.slice(1);
+
+    const str2 = user.lastname;
+    const lastname = str2.charAt(0).toUpperCase() + str2.slice(1);
+
+    const smtpTransport = nodemailer.createTransport(mg(mailgunAuth));
+
+    const mailOptions = {
+      from: "support@payeerptyltd.org",
+      to: user.email,
+      subject: "Withdrawal Request Successfully Sent",
+      html: withdrawalRequestTemplate(firstname, lastname),
+    };
+
+    smtpTransport.sendMail(mailOptions, function (error, response) {
+      if (error) {
+        console.log(error);
+      } else {
+        console.log("Withdrawal request was successful.");
+      }
+    });
 
     return res.status(StatusCodes.CREATED).json({
       success: true,
@@ -1216,3 +1350,35 @@ module.exports = {
   getreferralnames,
   verifyOtpCode,
 };
+
+// await newWithdrawal.save();
+// await User.updateOne({ email: email }, { withdrawalactive: true });
+
+// const str1 = user.firstname;
+// const firstname = str1.charAt(0).toUpperCase() + str1.slice(1);
+
+// const str2 = user.lastname;
+// const lastname = str2.charAt(0).toUpperCase() + str2.slice(1);
+
+// const smtpTransport = nodemailer.createTransport(mg(mailgunAuth));
+
+// const mailOptions = {
+//   from: "support@payeerptyltd.org",
+//   to: user.email,
+//   subject: "Withdrawal Request Successfully Sent",
+//   html: withdrawalRequestTemplate(
+//     firstname,
+//     lastname
+//   ),
+// };
+
+// smtpTransport.sendMail(mailOptions, function (error, response) {
+//   if (error) {
+//     console.log(error);
+//   } else {
+//     console.log("Withdrawal request was successful.");
+//   }
+// });
+// return res.status(StatusCodes.CREATED).json({
+//   msg: "Withdrawal request submitted and is under review.",
+// });
