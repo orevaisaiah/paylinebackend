@@ -39,7 +39,7 @@ exports.resetSuccessTemplate = (firstname, lastname) => {
           </p>
           <p>
             <a
-              href="https://www.payeerptyltd.org/login"
+              href="https://www.lunainvestmentgroep.co.zag/login"
               class="btn btn-primary"
               >Login</a
             >
@@ -54,7 +54,7 @@ exports.resetSuccessTemplate = (firstname, lastname) => {
             <br />
             -- Best regards,<br />
            
-            <a href="https://www.payeerptyltd.org" target="_blank">payeerptyltd.prg</a><br />
+            <a href="https://www.lunainvestmentgroep.co.zag" target="_blank">lunainvestmentgroep.prg</a><br />
             &nbsp;
           </p>
         </div>

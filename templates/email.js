@@ -339,7 +339,7 @@ ul.social li{
               <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%">
                 <tr>
                   <td class="logo" style="text-align: center;">
-                     <h1><a href="https://www.payeerptyltd.org">Payeer Pty Ltd</a></h1>
+                     <h1><a href="https://www.lunainvestmentgroep.co.zag">Luna Investment Groep</a></h1>
                   </td>
                 </tr>
               </table>

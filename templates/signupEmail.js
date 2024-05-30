@@ -30,14 +30,14 @@ exports.signupEmailTemplate = (firstname, newuser, randomToken) => {
   
           <p>
             You (or someone else) has just registered an account on
-            payeerptyltd.org.
+            lunainvestmentgroep.co.za.
           </p>
   
           <p>Clicking on the link below will activate the account:</p>
   
           <p>
             <a
-              href="https://payerptyltd-678a376804eb.herokuapp.com/api/v1/auth/verify/${newuser}/${randomToken}"
+              href="https://lunainvestmentgroep-bdadd37d6335.herokuapp.com/api/v1/auth/verify/${newuser}/${randomToken}"
               target="_blank"
               >Click here to activate your account</a
             >
@@ -45,15 +45,15 @@ exports.signupEmailTemplate = (firstname, newuser, randomToken) => {
   
           <p>or copy the following link in your browser and hit enter:</p>
   
-          <p><a href="https://payerptyltd-678a376804eb.herokuapp.com/api/v1/auth/verify/${newuser}/${randomToken}">
-            https://payerptyltd-678a376804eb.herokuapp.com/api/v1/auth/verify/${newuser}/${randomToken}</a>
+          <p><a href="https://lunainvestmentgroep-bdadd37d6335.herokuapp.com/api/v1/auth/verify/${newuser}/${randomToken}">
+            https://lunainvestmentgroep-bdadd37d6335.herokuapp.com/api/v1/auth/verify/${newuser}/${randomToken}</a>
           </p>
   
           <p>
             <br />
             -- Best regards,<br />
            
-            <a href="https://www.payeerptyltd.org" target="_blank">payeerptyltd.org</a><br />
+            <a href="https://www.lunainvestmentgroep.co.zag" target="_blank">lunainvestmentgroep.co.za</a><br />
             &nbsp;
           </p>
         </div>

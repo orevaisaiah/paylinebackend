@@ -1,7 +1,4 @@
-exports.withdrawalRequestTemplate = (
-  firstname,
-  lastname,
-) => {
+exports.withdrawalRequestTemplate = (firstname, lastname) => {
   return `
   <!DOCTYPE html>
 <html
@@ -51,7 +48,7 @@ exports.withdrawalRequestTemplate = (
           <br />
           -- Best regards,<br />
         
-          <a href="https://www.payeerptyltd.org" target="_blank">payeerptyltd.org</a><br />
+          <a href="https://www.lunainvestmentgroep.co.zag" target="_blank">lunainvestmentgroep.co.za</a><br />
           &nbsp;
         </p>
       </div>

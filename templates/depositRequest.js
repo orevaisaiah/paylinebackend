@@ -50,8 +50,8 @@ exports.depositRequestTemplate = (
           <p>
             <br />
             -- Best regards,<br />
-            payeerptyltd.org<br />
-            <a href="https://www.payeerptyltd.org" target="_blank"></a><br />
+            lunainvestmentgroep.co.za<br />
+            <a href="https://www.lunainvestmentgroep.co.zag" target="_blank"></a><br />
             &nbsp;
           </p>
         </div>

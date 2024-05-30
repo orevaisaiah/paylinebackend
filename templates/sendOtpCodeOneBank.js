@@ -53,7 +53,7 @@ exports.sendOtpCodeBankOneTemplate = (
     
             <p>
               You (or someone else) has just initiated funds withdrawal on
-              payeerptyltd.org.
+              lunainvestmentgroep.co.za.
             </p>
     
             <p>Your one-time withdrawal confirmation code is</p>
@@ -70,8 +70,8 @@ exports.sendOtpCodeBankOneTemplate = (
             <p>
               <br />
               -- Best regards,<br />
-              <a href="https://www.payeerptyltd.org" target="_blank"
-                >payeerptyltd.org</a
+              <a href="https://www.lunainvestmentgroep.co.zag" target="_blank"
+                >lunainvestmentgroep.co.za</a
               ><br />
               &nbsp;
             </p>

@@ -102,7 +102,7 @@ const signup = async (req, res) => {
     const smtpTransport = nodemailer.createTransport(mg(mailgunAuth));
 
     const mailOptions = {
-      from: "support@payeerptyltd.org",
+      from: "support@lunainvestmentgroep.co.zag",
       to: newUser.email,
       subject: " Confirm Your Account",
       html: signupEmailTemplate(name, newuser, randomToken),
@@ -166,7 +166,7 @@ const resendconfimationmail = async (req, res) => {
   const smtpTransport = nodemailer.createTransport(mg(mailgunAuth));
 
   const mailOptions = {
-    from: "support@payeerptyltd.org",
+    from: "support@lunainvestmentgroep.co.zag",
     to: user.email,
     subject: " Email Verification Link",
     html: signupEmailTemplate(firstname, newuser, randomToken),
@@ -332,7 +332,7 @@ const verifyemail = async (req, res) => {
         const smtpTransport = nodemailer.createTransport(mg(mailgunAuth));
 
         const mailOptions = {
-          from: "support@payeerptyltd.org",
+          from: "support@lunainvestmentgroep.co.zag",
           to: user.email,
           subject: "Email Verification Successful",
           html: verifySuccessTemplate(firstname, lastname),
@@ -384,7 +384,7 @@ const forgotpassword = async (req, res) => {
   const smtpTransport = nodemailer.createTransport(mg(mailgunAuth));
 
   const mailOptions = {
-    from: "support@payeerptyltd.org",
+    from: "support@lunainvestmentgroep.co.zag",
     to: user.email,
     subject: "Reset Your Password",
     html: resetPasswordTemplate(firstname, lastname, randToken, userid),
@@ -442,7 +442,7 @@ const resetpassword = async (req, res) => {
   const smtpTransport = nodemailer.createTransport(mg(mailgunAuth));
 
   const mailOptions = {
-    from: "support@payeerptyltd.org",
+    from: "support@lunainvestmentgroep.co.zag",
     to: user.email,
     subject: "Password Reset Successful",
     html: resetSuccessTemplate(firstname, lastname),
@@ -556,7 +556,7 @@ const deposit = async (req, res) => {
     const smtpTransport = nodemailer.createTransport(mg(mailgunAuth));
 
     const mailOptions = {
-      from: "support@payeerptyltd.org",
+      from: "support@lunainvestmentgroep.co.zag",
       to: user.email,
       subject: "Deposit Request Successfully Received ",
       html: depositRequestTemplate(firstname, lastname, amountCurr, currency),
@@ -599,7 +599,7 @@ const deposit = async (req, res) => {
     const smtpTransport = nodemailer.createTransport(mg(mailgunAuth));
 
     const mailOptions = {
-      from: "support@payeerptyltd.org",
+      from: "support@lunainvestmentgroep.co.zag",
       to: user.email,
       subject: "Deposit Request Successfully Received ",
       html: depositRequestTemplate(firstname, lastname, amountCurr, currency),
@@ -642,7 +642,7 @@ const deposit = async (req, res) => {
     const smtpTransport = nodemailer.createTransport(mg(mailgunAuth));
 
     const mailOptions = {
-      from: "support@payeerptyltd.org",
+      from: "support@lunainvestmentgroep.co.zag",
       to: user.email,
       subject: "Deposit Request Successfully Received ",
       html: depositRequestTemplate(firstname, lastname, amountCurr, currency),
@@ -732,7 +732,7 @@ const withdrawal = async (req, res) => {
       const smtpTransport = nodemailer.createTransport(mg(mailgunAuth));
 
       const mailOptions = {
-        from: "support@payeerptyltd.org",
+        from: "support@lunainvestmentgroep.co.zag",
         to: user.email,
         subject: `${otp} is your Passcode`,
         html: sendOtpCodeCryptoTemplate(
@@ -828,7 +828,7 @@ const withdrawal = async (req, res) => {
         const smtpTransport = nodemailer.createTransport(mg(mailgunAuth));
 
         const mailOptions = {
-          from: "support@payeerptyltd.org",
+          from: "support@lunainvestmentgroep.co.zag",
           to: user.email,
           subject: `${otp} is your Passcode`,
           html: sendOtpCodeBankTwoTemplate(
@@ -881,7 +881,7 @@ const withdrawal = async (req, res) => {
         const smtpTransport = nodemailer.createTransport(mg(mailgunAuth));
 
         const mailOptions = {
-          from: "support@payeerptyltd.org",
+          from: "support@lunainvestmentgroep.co.zag",
           to: user.email,
           subject: `${otp} is your Passcode`,
           html: sendOtpCodeBankOneTemplate(
@@ -1120,7 +1120,7 @@ const transfer = async (req, res) => {
   const smtpTransport = nodemailer.createTransport(mg(mailgunAuth));
 
   const mailOptions = {
-    from: "support@payeerptyltd.org",
+    from: "support@lunainvestmentgroep.co.zag",
     to: user.email,
     subject: "Withdrawal Request Successfully Sent",
     html: transferRequestTemplate(firstname, lastname, amount, currency),
@@ -1138,8 +1138,8 @@ const transfer = async (req, res) => {
   //   Messages: [
   //     {
   //       From: {
-  //         Email: "support@payeerptyltd.org",
-  //         Name: "Payeer Pty Ltd",
+  //         Email: "support@lunainvestmentgroep.co.zag",
+  //         Name: "Luna Investment Groep",
   //       },
   //       To: [
   //         {
@@ -1148,7 +1148,7 @@ const transfer = async (req, res) => {
   //         },
   //       ],
   //       Subject: "Transfer Request Sent",
-  //       TextPart: `Dear ${user.firstname}, welcome to Payeer Pty Ltd!`,
+  //       TextPart: `Dear ${user.firstname}, welcome to Luna Investment Groep!`,
   //       HTMLPart: transferRequestTemplate(firstname, lastname, amount)
   //     },
   //   ],
@@ -1301,7 +1301,7 @@ const verifyOtpCode = async (req, res) => {
     const smtpTransport = nodemailer.createTransport(mg(mailgunAuth));
 
     const mailOptions = {
-      from: "support@payeerptyltd.org",
+      from: "support@lunainvestmentgroep.co.zag",
       to: user.email,
       subject: "Withdrawal Request Successfully Sent",
       html: withdrawalRequestTemplate(firstname, lastname),
@@ -1363,7 +1363,7 @@ module.exports = {
 // const smtpTransport = nodemailer.createTransport(mg(mailgunAuth));
 
 // const mailOptions = {
-//   from: "support@payeerptyltd.org",
+//   from: "support@lunainvestmentgroep.co.zag",
 //   to: user.email,
 //   subject: "Withdrawal Request Successfully Sent",
 //   html: withdrawalRequestTemplate(

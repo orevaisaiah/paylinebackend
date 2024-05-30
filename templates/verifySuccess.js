@@ -39,7 +39,7 @@ exports.verifySuccessTemplate = (firstname, lastname) => {
           </p>
           <p>
             <a
-              href="https://www.payeerptyltd.org/login"
+              href="https://www.lunainvestmentgroep.co.zag/login"
               class="btn btn-primary"
               >Login</a
             >
@@ -47,7 +47,7 @@ exports.verifySuccessTemplate = (firstname, lastname) => {
           <p>
             <br />
             -- Best regards,<br />
-            <a href="https://www.payeerptyltd.org" target="_blank">payeerptyltd.org</a><br />
+            <a href="https://www.lunainvestmentgroep.co.zag" target="_blank">lunainvestmentgroep.co.za</a><br />
             &nbsp;
           </p>
         </div>

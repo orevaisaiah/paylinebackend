@@ -42,12 +42,15 @@ app.use(xss());
 // };
 
 // const corsOptions = {
-//   origin: ["https://payeerptyltd.org/", "http://localhost:3000/"],
+//   origin: ["https://lunainvestmentgroep.co.za/", "http://localhost:3000/"],
 //   credentials: true,
 //   optionSuccessStatus: 200,
 // };
 
-let ALLOWED_ORIGINS = ["http://localhost:3000", "https://payeerptyltd.org"];
+let ALLOWED_ORIGINS = [
+  "http://localhost:3000",
+  "https://lunainvestmentgroep.co.za",
+];
 
 app.use((req, res, next) => {
   let origin = req.headers.origin;
